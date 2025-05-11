@@ -28,4 +28,4 @@
 - CSS.
 - Javascript.
 
-  ## Check out the Game
+## Check out the Game

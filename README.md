@@ -15,9 +15,9 @@
 - If the board is full and no player has won, the game is a draw or tie.
 
 ### Outcome
-a. Player X wins: X gets three of their symbols in a row — horizontally, vertically, or diagonally.
-b. Player O wins: O gets three of their symbols in a row — horizontally, vertically, or diagonally.
-c. Tie or Draw: The board is full, and no player has three in a row.
+- Player X wins: X gets three of their symbols in a row — horizontally, vertically, or diagonally.
+- Player O wins: O gets three of their symbols in a row — horizontally, vertically, or diagonally.
+- Tie or Draw: The board is full, and no player has three in a row.
 
 ## Steps in Making the Game 
 1. The first step is making sure the game is working in the console.

@@ -1,8 +1,8 @@
 // JAVASCRIPT CODE FOR THE TIC TAC TOE GAME
 
-// Module; Gives a controlled access to the gameboard.
+// Module; Represent the state of the board.
 const Gameboard = (function () {
-    let gameboard = ["", "", "", "", "", "", "", "", ""];
+    let gameboard = ["", "", "", "", "", "", "", "", ""]; // Private variable. 
   
     // This gives us access the gameboard variable while making it private. 
     function getBoard() {
@@ -42,4 +42,6 @@ const Gameboard = (function () {
       printBoard: printBoard
     };
   })();
+
+
   

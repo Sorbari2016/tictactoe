@@ -4,7 +4,7 @@
 const Gameboard = (function () {
     let gameboard = ["", "", "", "", "", "", "", "", ""];
   
-    // This gives us access tot teh gameboard variable which is private. 
+    // This gives us access the gameboard variable while making it private. 
     function getBoard() {
       return gameboard;
     }

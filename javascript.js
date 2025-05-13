@@ -44,4 +44,11 @@ const Gameboard = (function () {
   })();
 
 
+// Create a player Factory function
+function player(name, symbol) { 
+    return {
+        name:name, 
+        symbol: symbol
+    }; 
+}
   

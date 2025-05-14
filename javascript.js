@@ -44,11 +44,10 @@ const Gameboard = (function () {
   })();
 
 
-// Create a player Factory function
+// Create a player Factory function, template for player instances. 
 function player(name, symbol) { 
     return {
         name:name, 
         symbol: symbol
     }; 
 }
-  

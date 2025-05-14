@@ -138,6 +138,10 @@ const GameController = (function () {
   };
 })();
 
+// Run the game
+GameController.startGame();
+
+
 
 
 

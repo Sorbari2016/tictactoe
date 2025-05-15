@@ -69,6 +69,12 @@ const GameController = (function () {
     [0,4,8], [2,4,6]           // diagonals
   ];
 
+// To track how many rounds each player has won.  
+  let player1Wins = 0;
+  let player2Wins = 0;
+  let roundCount = 0;
+  const maxRounds = 3;
+
 // A Method that will simply help to switch from one player to another.
 function switchPlayer() {
   if (currentPlayer === player1) {
@@ -102,6 +108,17 @@ function switchPlayer() {
       output: process.stdout
     });
 
+    // To play each round
+    function playRound() {
+      Gameboard.resetBoard();
+      currentPlayer = player1;
+      console.clear();
+      console.log(`🔁 Starting Round ${roundCount + 1} of ${maxRounds}`);
+      askMove();
+    }
+
+    
+    // Take user input, validate moves, update the board, check for win/tie conditions, switch players. 
     function askMove() {
       Gameboard.printBoard();
       readline.question(currentPlayer.name + " (" + currentPlayer.symbol + "), choose a cell (1-9): ", function (input) {
@@ -111,15 +128,22 @@ function switchPlayer() {
           if (Gameboard.updateCell(index, currentPlayer.symbol)) {
             if (checkWin()) {
               Gameboard.printBoard();
-              console.log(currentPlayer.name + " wins!");
-              readline.close();
+              console.log(currentPlayer.name + " wins this round! 🎉");
+
+              if (currentPlayer === player1) {
+                player1Wins++;
+              } else {
+                player2Wins++;
+              }
+
+              nextRound();
               return;
             }
 
             if (checkTie()) {
               Gameboard.printBoard();
-              console.log("It's a tie!");
-              readline.close();
+              console.log("It's a tie this round! 🤝");
+              nextRound();
               return;
             }
 
@@ -136,7 +160,33 @@ function switchPlayer() {
       });
     }
 
-    askMove();
+    // Handles the next round, if we go to another one, or finish the match & show scores. 
+    function nextRound() {
+      roundCount++;
+      console.log(`📊 Score: Player 1 = ${player1Wins}, Player 2 = ${player2Wins}`);
+      if (roundCount < maxRounds) {
+        readline.question("Press Enter to continue to the next round...", function () {
+          playRound();
+        });
+      } else {
+        endGame();
+      }
+    }
+
+    // Determines who won overall, or if it is a tie. 
+    function endGame() {
+      console.log("\n🏁 Match Over!");
+      if (player1Wins > player2Wins) {
+        console.log("🏆 Player 1 wins the match!");
+      } else if (player2Wins > player1Wins) {
+        console.log("🏆 Player 2 wins the match!");
+      } else {
+        console.log("⚖️ The match ends in a tie!");
+      }
+      readline.close();
+    }
+
+    playRound(); // Start the first round
   }
 
   return {

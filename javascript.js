@@ -2,9 +2,10 @@
 
 // Module; Represent the state of the board.
 const Gameboard = (function () {
-    let gameboard = ["", "", "", "", "", "", "", "", ""]; // Private variable. 
+    // Private items
+    let gameboard = ["", "", "", "", "", "", "", "", ""];  
   
-    // This gives us access the gameboard variable while making it private. 
+    // helps us return the gameboard private variable.  
     function getBoard() {
       return gameboard;
     }
@@ -34,6 +35,7 @@ const Gameboard = (function () {
       `);
     }
   
+    // Public items... 
     // returns the following methods.
     return {
       getBoard: getBoard,
@@ -54,7 +56,7 @@ function player(name, symbol) {
 
 // Create the module that runs the game:controls turns, checks win/tie, interacts with players
 const GameController = (function () {
-// The first part will be the player instances
+// The first part will be the player instances, & currentplayer set to player1. 
 
   const player1 = player("Player 1", "X");
   const player2 = player("Player 2", "O");
@@ -68,9 +70,13 @@ const GameController = (function () {
   ];
 
 // A Method that will simply help to switch from one player to another.
-  function switchPlayer() {
-    currentPlayer = currentPlayer === player1 ? player2 : player1;
+function switchPlayer() {
+  if (currentPlayer === player1) {
+    currentPlayer = player2;
+  } else {
+    currentPlayer = player1;
   }
+}
 
 // Method which will loop through all the winCombos to check if the currentPlayer has filled all 3 cells in the combo.
   function checkWin() {
@@ -137,6 +143,7 @@ const GameController = (function () {
     startGame: startGame
   };
 })();
+
 
 // Run the game
 GameController.startGame();

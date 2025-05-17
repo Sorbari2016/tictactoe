@@ -33,7 +33,7 @@ const Gameboard = (function () {
         ---------
         ${gameboard[6] || '7'} | ${gameboard[7] || '8'} | ${gameboard[8] || '9'}
       `);
-    }
+    } // Also, the part of the code that makes the game appear in a 3*3 structure. 
   
     // Public items... 
     // returns the following methods.
@@ -110,7 +110,7 @@ function switchPlayer() {
 
     // To play each round
     function playRound() {
-      Gameboard.resetBoard();
+      Gameboard.resetBoard(); // We call the function to clear the board state; created earlier on. 
       currentPlayer = player1;
       console.clear();
       console.log(`🔁 Starting Round ${roundCount + 1} of ${maxRounds}`);

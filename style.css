@@ -5,6 +5,8 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: black;
+
   }
   
   .board {
@@ -34,5 +36,16 @@ body {
   #restartBtn {
     margin-top: 20px;
     padding: 10px 20px;
+    background-color: whitesmoke;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
+  /* Rules for the Title of the game */
+  h1 {
+    color: whitesmoke;
+    text-shadow: 2px 2px 4px rgba(214, 234, 225, 0.6); 
   }
   

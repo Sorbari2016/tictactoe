@@ -109,13 +109,11 @@ function handleMove(event) {
       gameOver = true;
       endRound();
     } else {
-      switchPlayer(); // 🔁 Switch turns
+      switchPlayer(); // Switch turns
       updateStatus(`${currentPlayer.name}'s turn (${currentPlayer.symbol}) — Round ${round}`);
     }
   }
 }
-
-
 
 
 // A Method that will simply help to switch from one player to another.
@@ -140,12 +138,12 @@ function checkTie() {
   return Gameboard.getBoard().every(cell => cell !== "");
 }
 
-
+// Method to update who won or tie
 function updateStatus(message) {
   statusDisplay.textContent = message;
 }
 
-
+// Method to end each round. 
 function endRound() {
   if (round < 3) {
     round++;
@@ -155,8 +153,10 @@ function endRound() {
   }
 }
 
+// Method to declare the final winner
 function declareFinalWinner() {
   let message;
+
   if (score[player1.name] > score[player2.name]) {
     message = `${player1.name} wins the game! 🏆`;
   } else if (score[player2.name] > score[player1.name]) {
@@ -175,6 +175,7 @@ restartBtn.addEventListener('click', () => startNewGame(true));
 // public item
 return { startNewGame };
 })();
+
 
 // To run only when the whole DOM are fully loaded and ready. 
 window.addEventListener('DOMContentLoaded', GameController.startNewGame);

@@ -48,4 +48,8 @@ body {
     color: whitesmoke;
     text-shadow: 2px 2px 4px rgba(214, 234, 225, 0.6); 
   }
+
+ #status {
+  color: whitesmoke;
+ }
   

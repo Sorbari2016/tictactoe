@@ -88,8 +88,8 @@ function startNewGame(resetAll = false) {
       cell.addEventListener('click', handleMove);
       boardContainer.appendChild(cell); // Attach cell to baordContainer. 
     }
-
-    updateStatus(`${currentPlayer.name}'s turn (${currentPlayer.symbol}) — Round ${round}`);
+    
+    updateStatus(`Round ${round}<br>${currentPlayer.name}'s turn (${currentPlayer.symbol})`); 
   }
 
 // Method to handle cell clicks
@@ -110,7 +110,7 @@ function handleMove(event) {
       endRound();
     } else {
       switchPlayer(); // Switch turns
-      updateStatus(`${currentPlayer.name}'s turn (${currentPlayer.symbol}) — Round ${round}`);
+      updateStatus(`Round ${round}<br>${currentPlayer.name}'s turn (${currentPlayer.symbol})`); 
     }
   }
 }
@@ -140,7 +140,7 @@ function checkTie() {
 
 // Method to update who won or tie
 function updateStatus(message) {
-  statusDisplay.textContent = message;
+  statusDisplay.innerHTML = message;
 }
 
 // Method to end each round. 
@@ -164,7 +164,7 @@ function declareFinalWinner() {
   } else {
     message = "The game ends in a tie! 🤝";
   }
-  updateStatus(`Final Result: ${message}`);
+  updateStatus(message);
 }
 
 

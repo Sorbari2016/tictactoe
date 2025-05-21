@@ -80,7 +80,7 @@ function startNewGame(resetAll = false) {
     score[player1.name] = 0;
     score[player2.name] = 0;
   }
-  // Create 9 elements for the board
+  // Create 9 cells for the board
     for (let i = 0; i < 9; i++) { 
       const cell = document.createElement('div');
       cell.classList.add('cell');
@@ -128,14 +128,20 @@ function handleMove(event) {
 // Method which will loop through all the winCombos to check if the currentPlayer has filled all 3 cells in the combo.
 function checkWin() {
   const board = Gameboard.getBoard();
-  return winCombos.some(combo =>
-    combo.every(i => board[i] === currentPlayer.symbol)
-  );
+
+  return winCombos.some(function(combo) {
+    return combo.every(function(i) {
+      return board[i] === currentPlayer.symbol;
+    });
+  });
 }
+
 
 // Method which will check if every cell is filled and there is no winner. 
 function checkTie() {
-  return Gameboard.getBoard().every(cell => cell !== "");
+  return Gameboard.getBoard().every(function(cell) {
+    return cell !== "";
+  });
 }
 
 // Method to update who won or tie

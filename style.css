@@ -72,8 +72,14 @@ body {
   margin-top: 10px;
   height: 520px; 
   border-radius: 10px;
-
  }
+
+.status-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
 
 
 

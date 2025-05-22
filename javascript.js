@@ -42,18 +42,34 @@ function player(name, symbol) {
 const GameController = (function () {
 // variables for player instances, currentplayer, & gameOver.  
 
-  const player1 = player("Player 1", "X");
-  const player2 = player("Player 2", "O");
+document.getElementById('nameForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const name1 = document.getElementById('player1Name').value.trim() || "Player 1";
+  const name2 = document.getElementById('player2Name').value.trim() || "Player 2";
+  GameController.launchGameWithNames(name1, name2);
+});
+
+
+  let player1, player2; 
   let currentPlayer = player1; 
   let gameOver = false; 
 
-// Track rounds, and scores 
-let round = 1;
-let score = {
-  [player1.name]: 0,
-  [player2.name]: 0
-};
+  let score; // initialize score. 
 
+// Method to set players names
+function setPlayersNames(name1, name2) {
+  player1 = player(name1, "X"); 
+  player2 = player(name2, "O"); 
+
+  score = {
+    [player1.name]: 0,
+    [player2.name]: 0
+  };
+}
+
+// Track rounds
+let round = 1;
+ 
 
 // An array to store the different winnnig combinations.
   const winCombos = [
@@ -71,7 +87,9 @@ let score = {
 // Method to setup or reset the game
 function startNewGame(resetAll = false) {
   Gameboard.resetBoard();
+  if (!player1 || !player2) return; // Ensure players are initialized
   currentPlayer = player1;
+
   gameOver = false;
   boardContainer.innerHTML = ""; // Clears the board. 
 
@@ -89,7 +107,7 @@ function startNewGame(resetAll = false) {
       boardContainer.appendChild(cell); // Attach cell to baordContainer. 
     }
     
-    updateStatus(`Round ${round}<br>${currentPlayer.name}'s turn (${currentPlayer.symbol})`); 
+    updateStatus(`Round ${round}<br>${currentPlayer.name}'s turn (${currentPlayer.symbol})`);
   }
 
 // Method to handle cell clicks
@@ -177,14 +195,19 @@ function declareFinalWinner() {
 // Add a click eventlistener to the restart button
 restartBtn.addEventListener('click', () => startNewGame(true));
 
+// Method to start the game with names players inputed.
+function launchGameWithNames(name1, name2) {
+  setPlayersNames(name1, name2);
+  document.getElementById('nameFormContainer').style.display = 'none';
+  document.getElementById('gameContainer').style.display = 'block';
+  startNewGame(true);
+}
+
 
 // public item
-return { startNewGame };
+return { startNewGame, launchGameWithNames };
 })();
 
-
-// To run only when the whole DOM are fully loaded and ready. 
-window.addEventListener('DOMContentLoaded', GameController.startNewGame);
 
 
 

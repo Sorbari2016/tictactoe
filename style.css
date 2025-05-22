@@ -53,7 +53,7 @@ body {
     color: darkslateblue; 
   }
 
-  #restartBtn:hover {
+  #restartBtn:hover, .form-container button:hover {
     background-color: darkslateblue;
     color: whitesmoke;
     border: 1px solid white;
@@ -110,6 +110,7 @@ body {
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid #ccc;
+  color: darkslateblue;
 }
 
 .form-container button {
@@ -119,14 +120,22 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
+  color: darkslateblue;
 }
 
 h2 {
   margin-bottom: 20px;
 }
 
+form p {
+  padding: 10px;
+}
 
+input:focus{
+  outline: 0;
+  border: 2px solid yellow;
 
-
+}
 
 

@@ -43,7 +43,6 @@ body {
   }
   
   #restartBtn {
-    margin-top: 20px;
     padding: 10px 20px;
     background-color: whitesmoke;
     font-weight: bold;
@@ -77,7 +76,7 @@ body {
   background-color: darkslateblue;
   width: 400px; 
   margin-top: 10px;
-  height: 520px; 
+  height: 530px; 
   border-radius: 10px;
  }
 
@@ -137,5 +136,29 @@ input:focus{
   border: 2px solid yellow;
 
 }
+
+
+.screen-box {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+}
+
+
+.box {
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #575097;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: whitesmoke;
+
+}
+
 
 

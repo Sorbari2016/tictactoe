@@ -65,7 +65,16 @@ function setPlayersNames(name1, name2) {
     [player1.name]: 0,
     [player2.name]: 0
   };
+  
+  updateScoreBoard();
 }
+
+
+function updateScoreBoard() {
+  player1ScoreBox.textContent = `${player1.name}: ${score[player1.name]}`;
+  player2ScoreBox.textContent = `${player2.name}: ${score[player2.name]}`;
+}
+
 
 // Track rounds
 let round = 1;
@@ -83,6 +92,9 @@ let round = 1;
   const statusDisplay = document.getElementById('status');
   const restartBtn = document.getElementById('restartBtn');
   const boardContainer = document.getElementById('gameboard');
+  const player1ScoreBox = document.getElementById('player1ScoreBox');
+  const player2ScoreBox = document.getElementById('player2ScoreBox');
+
 
 // Method to setup or reset the game
 function startNewGame(resetAll = false) {
@@ -97,7 +109,10 @@ function startNewGame(resetAll = false) {
     round = 1;
     score[player1.name] = 0;
     score[player2.name] = 0;
+    updateScoreBoard();
   }
+
+
   // Create 9 cells for the board
     for (let i = 0; i < 9; i++) { 
       const cell = document.createElement('div');
@@ -120,6 +135,7 @@ function handleMove(event) {
     if (checkWin()) {
       updateStatus(`${currentPlayer.name} wins Round ${round}! 🎉`);
       score[currentPlayer.name]++;
+      updateScoreBoard();
       gameOver = true;
       endRound();
     } else if (checkTie()) {

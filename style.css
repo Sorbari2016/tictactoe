@@ -50,6 +50,13 @@ body {
     border-radius: 5px;
     cursor: pointer;
     border: 0;
+    color: darkslateblue; 
+  }
+
+  #restartBtn:hover {
+    background-color: darkslateblue;
+    color: whitesmoke;
+    border: 1px solid white;
   }
 
 
@@ -87,7 +94,8 @@ body {
 .form-container {
   background-color: darkslateblue;
   width: 400px;
-  margin-top: 50px;
+  height: 300px;
+  margin-top: 10px;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -112,6 +120,12 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+
+h2 {
+  margin-bottom: 20px;
+}
+
+
 
 
 

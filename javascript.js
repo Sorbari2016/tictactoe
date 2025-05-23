@@ -24,9 +24,8 @@ const Gameboard = (function () {
       }
       return false;
     }
-    // Public items... 
-    // returns the following methods.
-    return { getBoard, resetBoard, updateCell };
+    // Public items...   
+    return { getBoard, resetBoard, updateCell }; // returns the following methods.
   })();
 
 
@@ -42,21 +41,24 @@ function player(name, symbol) {
 const GameController = (function () {
 // variables for player instances, currentplayer, & gameOver.  
 
-document.getElementById('nameForm').addEventListener('submit', function (e) {
+ nameForm = document.getElementById('nameForm') // Select the DOM form.   
+ 
+ nameForm.addEventListener('submit', function (e) {  // Add event listener submit; then prevent form submission default behaviuour.  
   e.preventDefault();
-  const name1 = document.getElementById('player1Name').value.trim() || "Player 1";
-  const name2 = document.getElementById('player2Name').value.trim() || "Player 2";
+
+  const name1 = document.getElementById('player1Name').value.trim() || "Player 1"; // Get value filled by player 1, trim.
+  const name2 = document.getElementById('player2Name').value.trim() || "Player 2"; // Get value filled by player 2, trim. 
   GameController.launchGameWithNames(name1, name2);
 });
 
-
+// Initialize the players and gameOver variables
   let player1, player2; 
   let currentPlayer = player1; 
   let gameOver = false; 
 
   let score; // initialize score. 
 
-// Method to set players names
+// Method to set players names, and their scores. 
 function setPlayersNames(name1, name2) {
   player1 = player(name1, "X"); 
   player2 = player(name2, "O"); 
@@ -69,7 +71,7 @@ function setPlayersNames(name1, name2) {
   updateScoreBoard();
 }
 
-
+// Method to set the content of the UI display for scores to Playern Name : Score. 
 function updateScoreBoard() {
   player1ScoreBox.textContent = `${player1.name}: ${score[player1.name]}`;
   player2ScoreBox.textContent = `${player2.name}: ${score[player2.name]}`;
@@ -214,8 +216,8 @@ restartBtn.addEventListener('click', () => startNewGame(true));
 // Method to start the game with names players inputed.
 function launchGameWithNames(name1, name2) {
   setPlayersNames(name1, name2);
-  document.getElementById('nameFormContainer').style.display = 'none';
-  document.getElementById('gameContainer').style.display = 'block';
+  document.getElementById('nameFormContainer').style.display = 'none'; // Disable the form.
+  document.getElementById('gameContainer').style.display = 'block'; // Make the game appear. 
   startNewGame(true);
 }
 

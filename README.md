@@ -29,3 +29,4 @@
 - Javascript.
 
 ## Check out the Game
+[play my tictactoe game](https://sorbari2016.github.io/tictactoe/)

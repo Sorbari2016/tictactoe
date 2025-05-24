@@ -39,7 +39,7 @@ function player(name, symbol) {
 
 // Module to control game state
 const GameController = (function () {
-// variables for player instances, currentplayer, & gameOver.  
+// Manage form inputs  
 
  nameForm = document.getElementById('nameForm') // Select the DOM form.   
  
@@ -48,7 +48,7 @@ const GameController = (function () {
 
   const name1 = document.getElementById('player1Name').value.trim() || "Player 1"; // Get value filled by player 1, trim.
   const name2 = document.getElementById('player2Name').value.trim() || "Player 2"; // Get value filled by player 2, trim. 
-  GameController.launchGameWithNames(name1, name2);
+  GameController.launchGameWithNames(name1, name2); // Start the game with the names obtained from the form. 
 });
 
 // Initialize the players and gameOver variables
@@ -58,7 +58,7 @@ const GameController = (function () {
 
   let score; // initialize score. 
 
-// Method to set players names, and their scores. 
+// Method to set players names, their symbols and initial scores. 
 function setPlayersNames(name1, name2) {
   player1 = player(name1, "X"); 
   player2 = player(name2, "O"); 
@@ -71,7 +71,7 @@ function setPlayersNames(name1, name2) {
   updateScoreBoard();
 }
 
-// Method to set the content of the UI display for scores to Playern Name : Score. 
+// Method to set the content of the UI display to track scores.
 function updateScoreBoard() {
   player1ScoreBox.textContent = `${player1.name}: ${score[player1.name]}`;
   player2ScoreBox.textContent = `${player2.name}: ${score[player2.name]}`;

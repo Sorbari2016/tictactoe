@@ -37,7 +37,7 @@ function player(name, symbol) {
     }; 
 }
 
-// Module to control game state
+// Module to control the state of the game 
 const GameController = (function () {
 // Manage form inputs  
 
